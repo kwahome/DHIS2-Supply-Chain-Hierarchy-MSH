@@ -35,15 +35,15 @@
                     </div>
                     <div id="collapseFacilities" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <div class = "btn btn-info btn-md" onclick="javascript:classifyFacilities(1)" data-toggle="collapse" data-parent="#accordion" href="#collapseOrgUnits">
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:classifyFacilities(1)" data-toggle="collapse" data-parent="#accordion" href="#collapseOrgUnits">
                                 Central Sites
                             </div>
                             <br>
-                            <div class = "btn btn-success btn-md" onclick="javascript:classifyFacilities(2)" data-toggle="collapse" data-parent="#accordion" href="#collapseOrgUnits">
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:classifyFacilities(2)" data-toggle="collapse" data-parent="#accordion" href="#collapseOrgUnits">
                                 Satellite Sites
                             </div>
                             <br>
-                            <div class = "btn btn-warning btn-md" onclick="javascript:classifyFacilities(3)" data-toggle="collapse" data-parent="#accordion" href="#collapseOrgUnits">
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:classifyFacilities(3)" data-toggle="collapse" data-parent="#accordion" href="#collapseOrgUnits">
                                 Stand Alones
                             </div>
                         </div>
@@ -169,9 +169,17 @@
                     </div>
                     <div id="collapseUpdates" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <div class = "btn btn-info btn-md" onclick="javascript:getData(2)">Counties</div>
-                            <div class = "btn btn-info btn-md" onclick="javascript:getData(3)">Sub Counties</div>
-                            <div class = "btn btn-info btn-md" onclick="javascript:getData(4)">Facilities</div>
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:getData(2)">
+                                Counties
+                            </div>
+                            <br>
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:getData(3)">
+                                Sub Counties
+                            </div>
+                            <br>
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:getData(4)">
+                                Facilities
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -189,9 +197,17 @@
                     </div>
                     <div id="collapseReports" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <div class = "btn btn-info btn-md" onclick="javascript:getData(2)">Counties</div>
-                            <div class = "btn btn-info btn-md" onclick="javascript:getData(3)">Sub Counties</div>
-                            <div class = "btn btn-info btn-md" onclick="javascript:getData(4)">Facilities</div>
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:getData(2)">
+                                Counties
+                            </div>
+                            <br>
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:getData(3)">
+                                Sub Counties
+                            </div>
+                            <br>
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:getData(4)">
+                                Facilities
+                            </div>
                         </div>
                     </div>
                 </div>
