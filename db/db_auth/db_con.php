@@ -17,10 +17,10 @@
 *..................................................................................*/
 
 
-    $servername = "localhost";//YOur server
-    $username = "YOURUSERNAME";//Your server username
-    $password = "YOURPASSWORD";//Your server username password
-    $dbname = "msh_task";//Your database name
+    $servername = "localhost";
+    $username = "root";
+    $password = "wahome";
+    $dbname = "msh_task";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password,$dbname);

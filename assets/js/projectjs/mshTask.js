@@ -59,7 +59,7 @@ function changeColor(type)
 function getData(level) 
 {
     var count=1
-    for(count =1;count<=1;count++)
+    for(count =1;count<=20;count++)
     {
         var url = "http://test.hiskenya.org/api/organisationUnits.jsonp?page="+count+"&callback=?";
         $.getJSON( url, 
@@ -73,7 +73,7 @@ function getData(level)
                 {
                     if(level==4)
                     {
-                        $('div#returned_messages').html("<span class = 'fa fa-cog' style = 'color:orange;'> Updating facilities. This may take a while</span>");
+                        $('div#returned_messages').html("<span class = 'fa fa-exclamation-triangle' style = 'color:blue;'> Updating facilities. This may take a while <img src='assets/img/ajax-loader-3.gif'></span>");
                         if(response.level==4)
                         {
                             $.post
@@ -84,18 +84,37 @@ function getData(level)
                                 {
                                     if(message == 0)
                                     {
-                                        $('div#returned_messages').html("<span class = 'fa fa-ok' style = 'color:blue;'>"+response.name+" Inserted</span>");
+                                        $('div#facilities').html("<span class = 'fa fa-ok' style = 'color:blue;'>"+response.name+" Inserted</span>");
                                     }
 
                                     else if(message == 1)
                                     {
-                                        $('div#returned_messages').html("<span class = 'fa fa-ok' style = 'color:green;'>"+response.name+" Found</span>");
+                                        $('div#facilities').html("<span class = 'fa fa-ok' style = 'color:green;'>"+response.name+" Found</span>");
                                     }
 
                                     else if(message == -1)
                                     {
-                                        $('div#returned_messages').html("<span class = 'fa fa-ok' style = 'color:red;'>Error. "+response.name+" not inserted</span>");
+                                        $('div#facilities').html("<span class = 'fa fa-ok' style = 'color:red;'>Error. "+response.name+" not inserted</span>");
                                     }
+                                }
+                            );
+
+                            $('div#returned_messages').html("<span class = 'fa fa-check-square' style = 'color:green;'> Update Finished Successfully</span>");
+                            
+                            // Fetch the number of facilities
+                            var status_url = "db/fetch/system_status.php";  
+                            $.getJSON
+                            (
+                                status_url,
+                                {level:4},
+                                function(status)
+                                {
+                                    $('div#facilities').html("<span class = 'fa fa-ok' style = 'color:blue;'>"+status.length+" Facilities found</span>");
+                                    for(var j=0; j<status.length;j++)
+                                    {
+                                        //$('span#note').html("Loading <img src='assets/img/ajax-loader.gif'>");   
+                                        //$("<option VALUE='"+received[j].facility_id+"'>"+received[j].facility_name+"</option>").appendTo("div#facilities");
+                                    }   
                                 }
                             );
                         }
@@ -104,7 +123,7 @@ function getData(level)
 
                     else if(level == 3)
                     {
-                        $('div#returned_messages').html("<span class = 'fa fa-cog' style = 'color:orange;'> Updating sub-counties. This may take a while</span>");
+                        $('div#returned_messages').html("<span class = 'fa fa-exclamation-triangle' style = 'color:blue;'> Updating sub counties. This may take a while <img src='assets/img/ajax-loader-3.gif'></span>");
                         if(response.level==3)
                         {
                             $.post
@@ -115,18 +134,37 @@ function getData(level)
                                 {
                                     if(message == 0)
                                     {
-                                        $('div#returned_messages').html("<span class = 'fa fa-ok' style = 'color:blue;'>"+response.name+" Inserted</span>");
+                                        $('div#facilities').html("<span class = 'fa fa-ok' style = 'color:blue;'>"+response.name+" Inserted</span>");
                                     }
 
                                     else if(message == 1)
                                     {
-                                        $('div#returned_messages').html("<span class = 'fa fa-ok' style = 'color:green;'>"+response.name+" Found</span>");
+                                        $('div#facilities').html("<span class = 'fa fa-ok' style = 'color:green;'>"+response.name+" Found</span>");
                                     }
 
                                     else if(message == -1)
                                     {
-                                        $('div#returned_messages').html("<span class = 'fa fa-ok' style = 'color:red;'>Error</span>");
+                                        $('div#facilities').html("<span class = 'fa fa-ok' style = 'color:red;'>Error</span>");
                                     }
+                                }
+                            );
+                            
+                            $('div#returned_messages').html("<span class = 'fa fa-check-square' style = 'color:green;'> Update Finished Successfully</span>");
+                            
+                            // Fetch the number of sub counties
+                            var status_url = "db/fetch/system_status.php";  
+                            $.getJSON
+                            (
+                                status_url,
+                                {level:3},
+                                function(status)
+                                {
+                                    $('div#facilities').html("<span class = 'fa fa-ok' style = 'color:blue;'>"+status.length+" Sub Counties found</span>");
+                                    for(var j=0; j<status.length;j++)
+                                    {
+                                        // $('span#note').html("Loading <img src='assets/img/ajax-loader.gif'>");   
+                                        // $("<option VALUE='"+received[j].facility_id+"'>"+received[j].facility_name+"</option>").appendTo("div#facilities");
+                                    }   
                                 }
                             );
                         }
@@ -135,7 +173,7 @@ function getData(level)
 
                     else if(level == 2)
                     {
-                        $('div#returned_messages').html("<span class = 'fa fa-cog' style = 'color:orange;'> Updating counties. This may take a while</span>");
+                        $('div#returned_messages').html("<span class = 'fa fa-exclamation-triangle' style = 'color:blue;'> Updating counties. This may take a while <img src='assets/img/ajax-loader-3.gif'></span>");
                         if(response.level==2)
                         {
                             $.post
@@ -144,20 +182,40 @@ function getData(level)
                                 {id:response.id,name:response.name,parent:response.parent.id},
                                 function(message)
                                 {
+                                    //alert(message);
                                     if(message == 0)
                                     {
-                                        $('div#returned_messages').html("<span class = 'fa fa-ok' style = 'color:blue;'>"+response.name+" Inserted</span>");
+                                        $('div#facilities').html("<span class = 'fa fa-ok' style = 'color:blue;'>"+response.name+" Inserted</span>");
                                     }
 
                                     else if(message == 1)
                                     {
-                                        $('div#returned_messages').html("<span class = 'fa fa-ok' style = 'color:green;'>"+response.name+" Found</span>");
+                                        $('div#facilities').html("<span class = 'fa fa-ok' style = 'color:green;'>"+response.name+" Found</span>");
                                     }
 
                                     else if(message == -1)
                                     {
-                                        $('div#returned_messages').html("<span class = 'fa fa-ok' style = 'color:red;'>Error</span>");
+                                        $('div#facilities').html("<span class = 'fa fa-ok' style = 'color:red;'>Error</span>");
                                     }
+                                }
+                            );
+                            
+                            $('div#returned_messages').html("<span class = 'fa fa-check-square' style = 'color:green;'> Update Finished Successfully</span>");
+                            
+                            // Fetch the number of counties
+                            var status_url = "db/fetch/system_status.php";  
+                            $.getJSON
+                            (
+                                status_url,
+                                {level:2},
+                                function(status)
+                                {
+                                    $('div#facilities').html("<span class = 'fa fa-ok' style = 'color:blue;'>"+status.length+" Counties found</span>");
+                                    for(var j=0; j<status.length;j++)
+                                    {
+                                        // $('span#note').html("Loading <img src='assets/img/ajax-loader.gif'>");   
+                                        // $("<option VALUE='"+received[j].facility_id+"'>"+received[j].facility_name+"</option>").appendTo("div#facilities");
+                                    }   
                                 }
                             );
                         }
@@ -227,7 +285,7 @@ function classifyFacilities(type)
 
         // Fetch facilities and display in the picklist
         var url = "db/fetch/get_facilities.php";
-        $('span#note').html("Loading <img src='assets/img/ajax-loader.gif'>");      
+        $('span#note').html("<span class ='fa fa-exclamation-triangle'></span> Loading <img src='assets/img/ajax-loader-3.gif'>");      
         $.getJSON
         (
             url,
@@ -236,7 +294,7 @@ function classifyFacilities(type)
             {
                 for(var j=0; j<received.length;j++)
                 {
-                    $('span#note').html("Loading <img src='assets/img/ajax-loader.gif'>");   
+                    $('span#note').html("Loading <img src='assets/img/ajax-loader-3.gif'>");    
                     $("<option VALUE='"+received[j].facility_id+"'>"+received[j].facility_name+"</option>").appendTo("select#SelectList");
                 }
                 $('span#note').html("NOTE: Use DHIS2 Organization Units to sort and drill down");   
@@ -323,7 +381,7 @@ function classifyFacilities(type)
         $('div#facilities').html(data);
         // Fetch Central Stores and display in the Central Stores picklist
         var cs_url = "db/fetch/get_central_stores.php";
-        $('span#note').html("Loading <img src='assets/img/ajax-loader.gif'>");      
+        $('span#note').html("<span class ='fa fa-exclamation-triangle'></span> Loading <img src='assets/img/ajax-loader-3.gif'>");         
         $.getJSON
         (
             cs_url,
@@ -331,7 +389,7 @@ function classifyFacilities(type)
             {
                 for(var j=0; j<returned.length;j++)
                 {
-                    $('span#note').html("Loading <img src='assets/img/ajax-loader.gif'>");   
+                    $('span#note').html("Loading <img src='assets/img/ajax-loader-3.gif'>");   
                     $("<option VALUE='"+returned[j].facility_id+"'>"+returned[j].facility_name+"</option>").appendTo("select#CSSelectList");
                 }
                 //$('span#note').html("NOTE: Use DHIS2 Organization Units to sort and drill down");   
@@ -340,7 +398,7 @@ function classifyFacilities(type)
 
         // Fetch facilities and display in the picklist
         var url = "db/fetch/get_facilities.php";
-        $('span#note').html("Loading <img src='assets/img/ajax-loader.gif'>");      
+        $('span#note').html("<span class ='fa fa-exclamation-triangle'></span> Loading <img src='assets/img/ajax-loader-3.gif'>");         
         $.getJSON
         (
             url,
@@ -349,7 +407,7 @@ function classifyFacilities(type)
             {
                 for(var j=0; j<received.length;j++)
                 {
-                    $('span#note').html("Loading <img src='assets/img/ajax-loader.gif'>");   
+                    $('span#note').html("Loading <img src='assets/img/ajax-loader-3.gif'>");    
                     $("<option VALUE='"+received[j].facility_id+"'>"+received[j].facility_name+"</option>").appendTo("select#SelectList");
                 }
                 $('span#note').html("NOTE: Use DHIS2 Organization Units to sort and drill down");   
@@ -399,7 +457,7 @@ function classifyFacilities(type)
 
         // Fetch facilities and display in the picklist
         var url = "db/fetch/get_facilities.php";
-        $('span#note').html("Loading <img src='assets/img/ajax-loader.gif'>");      
+        $('span#note').html("<span class ='fa fa-exclamation-triangle'></span> Loading <img src='assets/img/ajax-loader-3.gif'>");          
         $.getJSON
         (
             url,
@@ -408,6 +466,7 @@ function classifyFacilities(type)
             {
                 for(var j=0; j<received.length;j++)
                 {
+                    $('span#note').html("Loading <img src='assets/img/ajax-loader-3.gif'>");  
                     $("<option id = 'options' VALUE='"+received[j].facility_id+"'>"+received[j].facility_name+"</option>").appendTo("select#SelectList");
                 }
                 $('span#note').html("NOTE: Use DHIS2 Organization Units to sort and drill down");   
@@ -431,7 +490,7 @@ function classifyFacilities(type)
 function updateSelectList(level,unit_id)
 {
     var url = "db/fetch/get_facilities.php";
-    $('span#note').html("Loading <img src='assets/img/ajax-loader.gif'>");      
+    $('span#note').html("<span class ='fa fa-exclamation-triangle'></span> Loading <img src='assets/img/ajax-loader-3.gif'>");       
     $.getJSON
     (
         url,
@@ -748,7 +807,7 @@ function submitIt(btn)
                 type: "POST",   
                      url: "db/insertion/insert_stores.php",   
                      async: false,
-                     data:{data:pickOptions[i].value,central:CSpickOptions[i].value,type:"Satellite Site"},
+                     data:{data:pickOptions[i].value,central:CSpickOptions[0].value,type:"Satellite Site"},
                      success:function(result)
                      {
                         if(result == -1)
@@ -815,4 +874,154 @@ function submitIt(btn)
     }
   }
   return true;
+}
+/*-----------------------------------------------------------------------------------------------------------------------------------------------*/
+/*function getReports(2)*/
+function getReports(type)
+{
+    if(type == 1)
+    {
+        $('div#returned_messages').html("<span style = 'color:green;margin-left:0px'> Supply Pipeline Hierarchy</span></span>");
+                    //Central Stores 
+        var data = "<div class='panel panel-default' style = 'width:40%'>"+
+                        "<div class='panel-heading'> "+                               
+                            "<h3 class='panel-title'>Central Stores</h3> "+                             
+                        "</div>"+
+                        "<div class='panel-body' id = 'central_stores'>"+
+                        "</div>"+
+                    "</div>"+
+
+                    //Stand Alone sites
+                    "<div class='panel panel-default' style = 'width:40%;margin-left:10px'>"+
+                        "<div class='panel-heading'> "+                               
+                            "<h3 class='panel-title'>Stand Alone Sites</h3> "+                             
+                        "</div>"+
+                        "<div class='panel-body' id = 'standalone_sites'>"+
+                        "</div>"+
+                    "</div>"+
+
+                    //Satellite sites
+                    "<div class='panel panel-default' style = 'width:40%;margin-left:10px'>"+
+                        "<div class='panel-heading'> "+                               
+                            "<h3 class='panel-title'>All Satellite Sites</h3> "+                             
+                        "</div>"+
+                        "<div class='panel-body' id = 'satellite_sites'>"+
+                        "</div>"+
+                    "</div>";
+        // Append
+        $('div#facilities').html(data);
+
+        //Fetch Central Stores
+        var centralstores_url = "db/fetch/get_central_stores.php";
+        $.getJSON
+        (
+            centralstores_url,
+            function(received)
+            {
+                for(var j=0; j<received.length;j++)
+                {
+                    // $('span#note').html("Loading <img src='assets/img/ajax-loader-3.gif'>");
+                    //VALUE='"+received[j].facility_id+"' 
+                    var toAppend = "<div style='color:#23527C;font-size:8pt' id='central_accordion'>"+
+                                        "<a data-toggle='collapse' data-parent='#"+received[j].facility_id+"' href='#"+received[j].facility_id+"'>"+
+                                            "<span class='glyphicon glyphicon-plus-sign'></span> "+
+                                        "</a>"+
+                                        "<span class = 'fa fa-folder-o unclickedColor' onclick ='javascript:getReports(2)'> "+received[j].facility_name+"</span>"+                                            
+                                    "</div>"+
+                                    "<div id='"+received[j].facility_id+"' class='panel-collapse collapse'>"+
+                                        "<div class='panel-body' id = 'satellite_sites_area'>"+
+                                        "</div>"+
+                                    "</div>";
+                    $(toAppend).appendTo("div#central_stores");
+
+                    //Fetch Satellite Sites for the current Central Store
+                    var satellite_url = "db/fetch/get_satellite_sites.php";
+                    $.getJSON
+                    (
+                        satellite_url,
+                        {central_id:received[j].facility_id},
+                        function(values)
+                        {
+                            for(var k=0; k<values.length;k++)
+                            {  
+                                var satellitesToAppend ="<div style='color:#23527C;font-size:8pt' onclick ='javascript:getReports(2)'>"+
+                                                            values[k].facility_name+
+                                                            "<span style = 'color:black'> [Satellite Site]</span>"+
+                                                        "</div>";
+                                $("div#satellite_sites_area").append(satellitesToAppend);
+                            }  
+                        }
+                    );
+                }
+                // $('span#note').html("NOTE: Use DHIS2 Organization Units to sort and drill down");   
+            }
+        );
+
+        //Fetch Stand Alone Sites
+        var standalone_url = "db/fetch/get_standalone_sites.php";
+        $.getJSON
+        (
+            standalone_url,
+            // {id:"",type:1},
+            function(received)
+            {
+                for(var j=0; j<received.length;j++)
+                {  
+                    var standalonesToAppend = "<div class = 'unclickedColor color' style='color:#23527C;font-size:8pt' onclick ='javascript:getReports(2)'>"+
+                                                received[j].facility_name+
+                                                "</div>";
+                    $(standalonesToAppend).appendTo("div#standalone_sites");
+                }  
+            }
+        );
+
+        //Fetch All Satellite Sites
+        var satellite_url = "db/fetch/get_all_satellite_sites.php";
+        $.getJSON
+        (
+            satellite_url,
+            function(get)
+            {
+                for(var i=0; i<get.length;i++)
+                {  
+                    var allSatellitesToAppend = "<div class = 'unclickedColor' style='color:#23527C;font-size:8pt' onclick ='javascript:getReports(2)'>"+
+                                                    get[i].facility_name+
+                                                    " <span style = 'color:black' id = 'satellite_parent' onclick = 'javascript:getReports(2)'></span>"+
+                                                "</div>";
+                    $(allSatellitesToAppend).appendTo("div#satellite_sites");
+                }
+
+                //Get the parent for the satellite site
+                for(var i=0; i<get.length;i++)
+                {
+                   //Get Satellite site parent (Central store)
+                    var parent_url = "db/fetch/central_store_name.php";
+                    $.getJSON
+                    ( 
+                        parent_url,
+                        {central_store_id:get[i].facility_id},
+                        function(data) 
+                        {
+                            //alert(data[0].facility_name);
+                            $('span#satellite_parent').html("[Parent: "+data[0].facility_name+"]");
+                        }
+                    );
+                }  
+            }
+        );
+    }
+
+    else if(type == 2)
+    {
+        $('div#returned_messages').html("<span style = 'color:green;margin-left:0px'> MOH 729 FORM</span></span>");
+        $('div#facilities').empty();
+        var url = "http://test.hiskenya.org/api/dataSets/CcrrIEt35vP.jsonp?callback=?";
+        $.getJSON( url, 
+        function(data) 
+        {
+            //alert(data.dataEntryForm.htmlCode);
+            $('div#facilities').html("<div style = 'width:50%'>"+data.dataEntryForm.htmlCode+"</div>");
+        });
+    }
+
 }

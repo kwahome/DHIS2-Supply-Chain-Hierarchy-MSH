@@ -1,16 +1,17 @@
 <?php
-	require '../db_auth/db_con.php';
+    require '../db_auth/db_con.php';
 
+    $central_id = $_GET['central_id'];
     $data = array();
     $facility_data = array();
-    $query = "SELECT * FROM central_site";
+    $query = "SELECT * FROM satelite_site WHERE central_id='$central_id'";
     $result = mysqli_query($conn,$query);
     if(mysqli_num_rows($result)>0)
     {
         $count = 0;
         while($row = mysqli_fetch_assoc($result)) 
         {
-            $data[] = $row['central_id'];
+            $data[] = $row['satelite_id'];
             $count++;
         }
 
@@ -31,5 +32,5 @@
         $return = json_encode($facility_data);
         echo $return;
     }
-	mysqli_close($conn);
+    mysqli_close($conn);
 ?> 

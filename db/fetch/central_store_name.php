@@ -1,9 +1,10 @@
 <?php
 	require '../db_auth/db_con.php';
 
+    $centralId = $_GET['central_store_id'];
     $data = array();
     $facility_data = array();
-    $query = "SELECT * FROM central_site";
+    $query = "SELECT * FROM central_site WHERE central_id = '$centralId'";
     $result = mysqli_query($conn,$query);
     if(mysqli_num_rows($result)>0)
     {

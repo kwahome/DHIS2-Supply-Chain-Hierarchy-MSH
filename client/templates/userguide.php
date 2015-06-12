@@ -5,7 +5,7 @@
                             Go to 
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseFacilities">
                             CLASSIFY FACILITIES
-                            </a>, click on the facility type to classify and select the facilities to classify under it.
+                            </a>, click on the facility type to classify and select the facilities to under it.
                             Classification of facilities establishes a hierarchy of the supply chain
                             for report generation.
                         </p>
@@ -28,11 +28,24 @@
                         <p class = "lead text-justify" style = "font-size:10pt">
                             There is need to query DHIS2 for newly created organization units.
                             Use 
-                            <a  data-toggle="collapse" data-parent="#accordion" href="#collapseTUpdates">
+                            <a  data-toggle="collapse" data-parent="#accordion" href="#collapseUpdates">
                                 UPDATES
                             </a> 
                             to update the system database from DHIS2 Web API.
                             Updates fetch new organization units that may have been created.
+                            For instance new facilities that may have been added.
 
                         </p>
                     </div> 
+                    <div class = "col-md-2">
+                        <span style = "color:blue;">Reports</span>
+                        <p class = "lead text-justify" style = "font-size:10pt">
+                            The established supply pipeline hierachy is used to query for reports.
+                            Use
+                            <a  data-toggle="collapse" data-parent="#accordion" href="#collapseReports">
+                                REPORTS
+                            </a> 
+                            fetch reports.
+
+                        </p>
+                    </div>

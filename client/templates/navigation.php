@@ -35,15 +35,15 @@
                     </div>
                     <div id="collapseFacilities" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:classifyFacilities(1)" data-toggle="collapse" data-parent="#accordion" href="#collapseOrgUnits">
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:70%" onclick="javascript:classifyFacilities(1)" data-toggle="collapse" data-parent="#accordion" href="#collapseOrgUnits">
                                 Central Sites
                             </div>
                             <br>
-                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:classifyFacilities(2)" data-toggle="collapse" data-parent="#accordion" href="#collapseOrgUnits">
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:70%" onclick="javascript:classifyFacilities(2)" data-toggle="collapse" data-parent="#accordion" href="#collapseOrgUnits">
                                 Satellite Sites
                             </div>
                             <br>
-                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:classifyFacilities(3)" data-toggle="collapse" data-parent="#accordion" href="#collapseOrgUnits">
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:70%" onclick="javascript:classifyFacilities(3)" data-toggle="collapse" data-parent="#accordion" href="#collapseOrgUnits">
                                 Stand Alones
                             </div>
                         </div>
@@ -64,7 +64,11 @@
                         <div class="panel-body">
                             <p>
                                 <span data-toggle="collapse" data-parent="#collapseOrgUnits" href="" style = "padding-left:5px">
-                                    <span class = "unclickedColor color" onclick="javascript:updateSelectList(1)">Kenya</span>
+                                    <span class = "unclickedColor color" onclick="javascript:updateSelectList(1)">
+                                        <span class ="fa fa-folder-o">
+                                            Kenya
+                                        </span>
+                                    </span>
                                 </span>
                                 <a class="pull-left" data-toggle="collapse" data-parent="#collapseOrgUnits" href="#counties">
                                     <span class="glyphicon glyphicon-plus-sign" onclick="javascript:changeIcon()"></span>
@@ -88,7 +92,7 @@
                                                 $c_id = $row['county_id'];
                                                 echo "<p style = 'font:8pt'>
                                                         <span data-toggle='collapse' data-parent='#".$row['county_id']."' class = 'unclickedColor' style = 'padding-left:5px' onclick='javascript:updateSelectList(2,\"$c_id\")'>"
-                                                        .$row["county_name"].
+                                                        ."<span class = 'fa fa-folder-o'>"." ".$row["county_name"]."</span>".
                                                         "</span>";
                                                 echo "<a class='pull-left' data-toggle='collapse' data-parent='#".$row['county_id']."' href='#".$row['county_id']."'>
                                                             <span class='glyphicon glyphicon-plus-sign' onclick='javascript:changeIcon()'></span>
@@ -113,7 +117,7 @@
 
                                                                     echo "<p>
                                                                             <span data-toggle='collapse' data-parent='#".$data['sub_county_id']."' class = 'unclickedColor' style = 'padding-left:5px' onclick='javascript:updateSelectList(3,\"$sc_id\")'>"
-                                                                            .$data["sub_county_name"].
+                                                                            ."<span class = 'fa fa-folder-o'>"." ".$data["sub_county_name"]."</span>".
                                                                             "</span>";
                                                                     echo "<a class='pull-left' data-toggle='collapse' data-parent='#".$data['sub_county_id']."' href='#".$data['sub_county_id']."'>
                                                                                 <span class='glyphicon glyphicon-plus-sign' onclick='javascript:changeIcon()'></span>
@@ -134,7 +138,7 @@
                                                                                 {
                                                                                     $f_id = $facilities['facility_id'];
                                                                                     echo "<span onclick='javascript:updateSelectList(4,\"$f_id\")' class = 'unclickedColor color'>";
-                                                                                    echo $facilities['facility_name'];
+                                                                                    echo "<span class = 'fa fa-university' style = 'margin-bottom:5px'>"." ".$facilities['facility_name']."</span>";
                                                                                     echo "<br>";
                                                                                     echo "</span>";
                                                                                 }
@@ -169,15 +173,15 @@
                     </div>
                     <div id="collapseUpdates" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:getData(2)">
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:70%" onclick="javascript:getData(2)">
                                 Counties
                             </div>
                             <br>
-                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:getData(3)">
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:70%" onclick="javascript:getData(3)">
                                 Sub Counties
                             </div>
                             <br>
-                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:getData(4)">
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:70%" onclick="javascript:getData(4)">
                                 Facilities
                             </div>
                         </div>
@@ -197,16 +201,12 @@
                     </div>
                     <div id="collapseReports" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:getData(2)">
-                                Counties
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:70%" onclick="javascript:getReports(1)">
+                                Supply Hierarchy
                             </div>
                             <br>
-                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:getData(3)">
-                                Sub Counties
-                            </div>
-                            <br>
-                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:50%" onclick="javascript:getData(4)">
-                                Facilities
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:70%" onclick="javascript:getReports(2)">
+                                MOH 729
                             </div>
                         </div>
                     </div>
