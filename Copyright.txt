@@ -2,7 +2,7 @@
 * MSH SUPPLY CHAIN HIERARCHY PROJECT	                                           *
 * JUNE 2015                                                                        *
 * ----------------------------------                                               *
-*                                                                                  *
+*    Copyright (c) 2015                                                            *
 *    Kelvin Wahome                                                                 *
 *    Computer Science                                                              *
 * 	 School of Computing and Informatics                                           *
@@ -11,7 +11,7 @@
 *    © 2015
 * ---------------------------------------------------------------------------------*
 **
-*
+*   All rights reserved.
 **
 * ---------------------------------------------------------------------------------*
 */
