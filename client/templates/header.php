@@ -13,6 +13,7 @@
 * kevowahome@gmail.com                                                             *
 * .................................................................................*
 **
+*Copyright ©2015, All Rights Reserved, Kelvin Wahome
 **
 *..................................................................................*/
 --> 
@@ -30,6 +31,7 @@
         <script type="text/javascript" src="../../mshTask/assets/js/projectjs/jquery.min.js"></script>
         <script type="text/javascript" src="../../mshTask/assets/Bootstrap/dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../../mshTask/assets/js/jquery-2.1.4.js"></script>
+        <script type="text/javascript" src="../../mshTask/assets/js/angular.min.js"></script>
         
 
         <link rel="stylesheet" type="text/css" id="theme" href="../../mshTask/assets/template/css/theme-light.css"/>
