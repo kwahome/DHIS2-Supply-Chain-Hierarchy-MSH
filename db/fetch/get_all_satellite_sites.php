@@ -2,6 +2,7 @@
     require '../db_auth/db_con.php';
 
     $data = array();
+    $parent = array();
     $facility_data = array();
     $query = "SELECT * FROM satelite_site";
     $result = mysqli_query($conn,$query);
@@ -11,6 +12,7 @@
         while($row = mysqli_fetch_assoc($result)) 
         {
             $data[] = $row['satelite_id'];
+            $parent[] = $row['central_id'];
             $count++;
         }
 
@@ -28,6 +30,7 @@
                 }
             }
         }
+
         $return = json_encode($facility_data);
         echo $return;
     }
