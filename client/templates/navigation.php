@@ -201,12 +201,15 @@
                     </div>
                     <div id="collapseReports" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:70%" onclick="javascript:getReports(1)">
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:70%" onclick="javascript:getReports()">
                                 Supply Hierarchy
                             </div>
                             <br>
-                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:70%" onclick="javascript:getReports(2)">
-                                MOH 729
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:70%" onclick="javascript:getAnalytics()">
+                                Analytics
+                            </div>
+                            <div class = "btn btn-default btn-md" style = "margin-bottom:5px; width:70%" onclick="javascript:getAnalytics()">
+                                DataSet Report
                             </div>
                         </div>
                     </div>
